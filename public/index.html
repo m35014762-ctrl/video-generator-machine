@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Generator Machine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 Video Generator Machine</h1>
+            <p>Create professional videos in seconds</p>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <form id="videoForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="duration">Duration (minutes)</label>
+                        <input type="number" id="duration" name="duration" min="1" max="23" value="1" required>
+                        <small>Min: 1 min | Max: 23 min</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resolution">Resolution</label>
+                        <select id="resolution" name="resolution" required>
+                            <option value="1920x1080">1080p (1920x1080)</option>
+                            <option value="1280x720">720p (1280x720)</option>
+                            <option value="3840x2160">4K (3840x2160)</option>
+                            <option value="854x480">480p (854x480)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fps">Frames Per Second (FPS)</label>
+                        <select id="fps" name="fps" required>
+                            <option value="24">24 FPS</option>
+                            <option value="30" selected>30 FPS</option>
+                            <option value="60">60 FPS</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="audioFile">Audio File (Optional)</label>
+                        <input type="file" id="audioFile" name="audioFile" accept="audio/*">
+                        <small>MP3, WAV, AAC supported</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="effects">Video Effects</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="effects" value="fade"> Fade In/Out</label>
+                            <label><input type="checkbox" name="effects" value="zoom"> Zoom</label>
+                            <label><input type="checkbox" name="effects" value="rotate"> Rotate</label>
+                            <label><input type="checkbox" name="effects" value="blur"> Blur</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-generate">Generate Video</button>
+                </form>
+            </div>
+
+            <div class="status-container">
+                <div id="statusMessage" class="status-message" style="display: none;"></div>
+                <div id="progressContainer" class="progress-container" style="display: none;">
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                    <p id="progressText">Processing: 0%</p>
+                </div>
+                <div id="resultContainer" class="result-container" style="display: none;">
+                    <div class="success-message">
+                        <h3>✅ Video Generated Successfully!</h3>
+                        <p id="resultMessage"></p>
+                        <button id="downloadBtn" class="btn-download">Download Video</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Video Generator Machine | Create videos from 1 to 23 minutes</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
